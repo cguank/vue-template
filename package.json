@@ -10,6 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^19.0.2",
+    "@wiris/mathtype-ckeditor5": "^7.21.0",
     "axios": "^0.19.0",
     "vant": "^2.2.13-beta.0",
     "vue": "^2.5.2",

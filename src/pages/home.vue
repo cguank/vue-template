@@ -1,18 +1,25 @@
 <template>
-    <div>
-ddddd
-    </div>
+  <div>
+    <input type="text" :value="value" @input="$emit('input',$event.target.value)" />
+  </div>
 </template>
 
 <script>
-    export default {
-        name: '',
-        data: function () {
-            return {};
-        },
-        created() {
+export default {
+  props: {
+    value:String
+  },
+  data () {
+    return {
+    };
+  },
 
-        },
-        methods: {}
-    }
+  created: function(){},
+
+  methods: {}
+}
+
 </script>
+<style>
+
+</style>

@@ -23,6 +23,10 @@ const router = new Router({
         }
       }
       ]
+    },
+    {
+      path: '/editor',
+      component: ()=>import('@/pages/editor')
     }
 
   ]
