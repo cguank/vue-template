@@ -45,8 +45,11 @@ CKEDITOR.dialog.add("mathjax", function (d) {
           })
         },
         setup: function (a) { //a.data.math获得输入框的值
-          console.log(a.data.math);
           let selectText = CKEDITOR.getSelectedHtml().innerHTML;
+          let trim = selectText.replace(/<span.*(data-latexstr=".*?").*?<\/span>/g, function (m, p1) {
+            return p1;
+          });
+          console.log(trim);
           console.log(CKEDITOR.getSelectedHtml());
           if (selectText === '数字公式 小部件') {
             selectText = CKEDITOR.plugins.mathjax.trim(a.data.math)
@@ -56,11 +59,11 @@ CKEDITOR.dialog.add("mathjax", function (d) {
           console.log(a.data.math);
           this.setValue(selectText)
         },
-        commit: function (a) {
-          // console.log(a);
-          console.log(this.getValue());
+        commit: function (a) {//a是wedget
           a.setData("math", "\\(" + this.getValue() +
-            "\\)")
+            "\\)");
+          a.parts.span.$.setAttribute("data-latexstr", this.getValue()) //给span添上自定义属性
+          console.log(a.parts.span);
         }
       }, {
         id: "documentation",

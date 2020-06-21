@@ -25,9 +25,15 @@ CKEDITOR.editorConfig = function( config ) {
 		];
 	//MathJax
 	config.removeButtons = 'Save,NewPage,Preview,Print,PasteFromWord,PasteText,Paste,Copy,Cut,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,ImageButton,HiddenField,RemoveFormat,CopyFormatting,Indent,Outdent,Blockquote,CreateDiv,Language,Image,CodeSnippet,Flash,Table,HorizontalRule,Smiley,PageBreak,ShowBlocks,Maximize,About';
+
+
 	config.mathJaxLib = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML';
 	config.allowedContent = true
 	config.extraPlugins = 'abbr';
 	
+	//引入项目自身的mathjax.js但是会有问题
+	// 	let scriptObjs = document.scripts;
+	// let currentPath = scriptObjs[scriptObjs.length - 1].src.substring(0, scriptObjs[scriptObjs.length - 1].src.lastIndexOf("/") + 1);
+	// 	config.mathJaxLib = currentPath + 'static\/ckeditor-v1\/mathjax-lib.js?config=TeX-AMS-MML_HTMLorMML';
 	
 };
