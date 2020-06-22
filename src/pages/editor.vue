@@ -13,7 +13,7 @@ export default {
   },
   data () {
     return {
-      content: ''
+      content: '' //要使用String.raw``
     }
   },
   created () {
