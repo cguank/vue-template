@@ -1,28 +1,59 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import { isLogin } from "@/assets/js/utils";
+import {
+  isLogin
+} from "@/assets/js/utils";
 Vue.use(Router);
 
 const router = new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'home',
-      component: () => import('@/components/withusercenter'),
+      component: () => import('@/components/home'),
       meta: {
         title: '首页',
         requireAuth: false
       },
-      children: [{
-        path: '/home',
-        component: () => import('@/pages/home'),
+    children: [
+      {
+        path: '/promise-state',
+        component: () => import('@/pages/PromiseState'),
         meta: {
-          title: '首页',
+          title: 'PromiseState',
           requireAuth: false
-        }
-      }
-      ]
+        },
+      },
+      {
+        path: '/promise-async',
+        component: () => import('@/pages/PromiseAsync'),
+        meta: {
+          title: 'PromiseAsync',
+          requireAuth: false
+        },
+      },
+      {
+        path: '/promise-chain',
+        component: () => import('@/pages/PromiseChain'),
+        meta: {
+          title: 'PromiseChain',
+          requireAuth: false
+        },
+      },
+      {
+        path: '/promise-allsettled',
+        component: () => import('@/pages/PromiseAllsettled'),
+        meta: {
+          title: 'PromiseAllsettled',
+          requireAuth: false
+        },
+      },
+    ]
+
+  },
+    {
+      path: '/eventloop',
+      component:()=>import('@/pages/EventLoop')
     }
 
   ]
@@ -39,7 +70,9 @@ router.beforeEach((to, from, next) => {
     } else {
       next({
         path: '/user_login',
-        query: { redirect: to.fullPath } // 将跳转的路由path作为参数，登录成功后跳转到该路由
+        query: {
+          redirect: to.fullPath
+        } // 将跳转的路由path作为参数，登录成功后跳转到该路由
       })
     }
   } else {
