@@ -27,8 +27,6 @@ export default {
             }else {
               reject(wait);
             }
-            //isFulfilled && resolve(wait);
-            //isFulfilled || reject(wait);
           }, wait);
         })
       }

@@ -3,7 +3,7 @@ class Promise1 { //状态改变
   constructor(executor) { //new Promise((resolve,reject)=>{}),里面的箭头函数就是参数
     this.status = PENDING; //初始化状态
     this.data = ''; //resolve或reject中传递给then中回调函数的值
-    executor(this.resolve.bind(this), this.reject.bind(this)) //需要改变resolve的this，否则调用的时候this并不指向promise
+    executor(this.resolve.bind(this), this.reject.bind(this)) //需要改变resolve的this，否则调用的时候this并不指向promise实例
   }
   resolve(val) {
     this.data = val; //传递给then回调函数的值保存起来
@@ -106,7 +106,7 @@ class Promise3 { //实现链式调用
     } else if (this.status === PENDING) {
       //处于pending状态,我们不知道是会变完成还是失败,所以将成功和失败的回调函数分别推进数组中
       return new Promise3((resolve, reject) => {  //注意这个new promise的状态是在前一个promise的then方法中改变
-        this.onFulfilledFnArr.push(() => {
+        this.onFulfilledFnArr.push(() => { //这里推入新的函数是因为要改变这个新promise的状态
           try { //使用trycatch防止then方法中出错
             const result = onFulfilledFn(this.data);
              resolve(result);
